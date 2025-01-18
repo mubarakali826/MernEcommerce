@@ -1,5 +1,5 @@
 .sidebar {
-    background-color: rgb(255, 255, 255);
+    background-color: #F5F5DC;
     display: flex;
     flex-direction: column;
     padding: 4rem 0;
@@ -37,5 +37,5 @@
   }
   
   .MuiTypography-root {
-    background-color: #fff !important;
+    background-color: #F5F5DC !important;
   }

@@ -5,15 +5,23 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail")
 const crypto = require("crypto");
 const { send } = require("process");
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2
+
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
+
+  const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
     folder: "avatars",
     width: 150,
     crop: "scale",
   });
+  
     const { name, email, password } = req.body
     const user = await User.create({
         name,
@@ -22,7 +30,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         avatar: {
           public_id: myCloud.public_id,
           url: myCloud.secure_url,
-        },
+        }
     })
   
     sendToken(user, 201, res);
@@ -47,6 +55,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
        if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid email or password", 401));
       }
+      
       sendToken(user,200,res)
  })
 

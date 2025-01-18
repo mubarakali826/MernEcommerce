@@ -81,6 +81,7 @@ export const getAdminProduct = () => async (dispatch) => {
 // Create Product
 export const createProduct = (productData) => async (dispatch) => {
   try {
+    
     dispatch({ type: NEW_PRODUCT_REQUEST });
 
     const config = {

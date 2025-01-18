@@ -2,10 +2,15 @@ const Product = require('../models/productModel')
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require('../utils/apifeatures');
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 
 //create product  -- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
   let images = [];
 
@@ -18,10 +23,9 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   const imagesLinks = [];
 
   for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
+    const result = await cloudinary.uploader.upload(images[i], {
       folder: "products",
     });
-
     imagesLinks.push({
       public_id: result.public_id,
       url: result.secure_url,
@@ -142,7 +146,11 @@ exports.updateProduct = catchAsyncErrors( async (req, res, next) => {
 //Delete product
 exports.deleteProduct = catchAsyncErrors(async (req,res,next) => {
   let product = await Product.findById(req.params.id)
-
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
   if(!product){
     return res.status(500).json({
       success: false,
@@ -153,7 +161,7 @@ exports.deleteProduct = catchAsyncErrors(async (req,res,next) => {
   
   // Deleting Images From Cloudinary
   for (let i = 0; i < product.images.length; i++) {
-    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    await cloudinary.uploader.destroy(product.images[i].public_id);
   }
 
    await product.remove()

@@ -1,5 +1,5 @@
 .banner {
-  background-image: url("../../images/cover.jfif");
+  background-image: url("../../images/bgcover2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,6 +10,24 @@
   align-items: center;
   justify-content: center;
   color: white;
+}
+.auth-buttons {
+  margin-bottom: 100px;
+}
+
+.login-signup-btn {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-signup-btn:hover {
+  background-color: #ff3b2f;
 }
 
 .banner > h1 {
@@ -42,7 +60,7 @@
   content: "";
   width: 100vw;
   height: 100vmin;
-  background-color: #ffffff;
+  background-color: #F5F5DC;
   position: absolute;
   top: 0%;
   left: 0;

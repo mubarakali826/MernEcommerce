@@ -5,7 +5,6 @@ import Header from './component/layout/Header/Header';
 import WebFont from "webfontloader";
 import axios from "axios";
 import { useEffect, useState } from 'react';
-import Footer from './component/layout/Footer/Footer';
 import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails';
 import Products from "./component/Product/Products";
@@ -64,6 +63,8 @@ function App() {
     });
     store.dispatch(loadUser());
     getStripeApiKey();
+    console.log(stripeApiKey  );
+    
   }, []);
   return (
     <Router>
@@ -182,7 +183,6 @@ function App() {
         />
 
          </Switch>
-      <Footer />
     </Router>
   );
 }

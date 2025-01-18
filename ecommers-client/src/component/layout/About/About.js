@@ -5,7 +5,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 const About = () => {
   const visitLinkedIn= () => {
-    window.location = "https://www.linkedin.com/in/ashab-uddin-937a34206/";
+    window.location = "https://www.linkedin.com/in/mubarak-ali-rd/";
   };
   return (
     <div className="aboutSection">
@@ -21,25 +21,25 @@ const About = () => {
               src=""
               alt="Founder"
             />
-            <Typography>Ashab Uddin</Typography>
+            <Typography>Mubarak Ali</Typography>
             <Button onClick={ visitLinkedIn} color="primary">
               Visit LinkedIn
             </Button>
             <span>
-              This is a sample wesbite made by @ashabuddin. Only with the
+              This is a sample wesbite made by @mubarakali826. Only with the
               purpose to teach MERN Stack on the  Programmer
             </span>
           </div>
           <div className="aboutSectionContainer2">
             <Typography component="h2">Our Brands</Typography>
             <a
-              href="https://github.com/ashabuddin"
+              href="https://github.com/mubarakali826"
               target="blank"
             >
               <GitHubIcon className="GitHubSvgIcon" />
             </a>
 
-            <a href="https://www.linkedin.com/in/ashab-uddin-937a34206/" target="blank">
+            <a href="https://www.linkedin.com/in/mubarak-ali-rd/" target="blank">
               <LinkedInIcon className="LinkedInSvgIcon" />
             </a>
           </div>

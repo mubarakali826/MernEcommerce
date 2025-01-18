@@ -40,9 +40,9 @@ const Shipping = ({history}) => {
 
     return (
         <Fragment>
-          <MetaData title="Shipping Details" />
+          <MetaData title="Shipping Details"/>
           
-          <CheckoutSteps activeStep={0} />
+          <CheckoutSteps activeStep={0} className="as" />
 
             <div className="shippingContainer">
                 <div className="shippingBox">

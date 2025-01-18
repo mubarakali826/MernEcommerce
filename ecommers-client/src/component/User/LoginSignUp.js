@@ -44,7 +44,6 @@ const LoginSignUp = ({ history,location}) => {
     const registerSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
-
         myForm.set("name", name);
         myForm.set("email", email);
         myForm.set("password", password);

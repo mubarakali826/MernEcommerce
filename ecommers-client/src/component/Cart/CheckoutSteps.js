@@ -20,8 +20,12 @@ const CheckoutSteps = ({ activeStep }) => {
             icon: <AccountBalanceIcon />,
         },
     ];
+   
     const stepStyles = {
         boxSizing: "border-box",
+        backgroundColor: "#F5F5DC", // Beige background for the stepper
+        padding: "1rem",
+        borderRadius: "8px",
     };
 
     return (
