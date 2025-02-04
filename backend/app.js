@@ -24,12 +24,15 @@ const product = require("./routes/productRoutes");
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
+const cors = require('cors');
 
+app.use(cors()); // Allow all origins (for testing)
 // application routes
 app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
+
 
 app.use(express.static(path.join(__dirname, "../ecommers-client/build")));
 

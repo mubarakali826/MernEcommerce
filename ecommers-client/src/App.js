@@ -47,9 +47,10 @@ function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   const [stripeApiKey, setStripeApiKey] = useState("");
+  const URL="http://13.200.133.21:5000/"
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get(`${URL}/api/v1/stripeapikey`);
 
     setStripeApiKey(data.stripeApiKey);
   }
